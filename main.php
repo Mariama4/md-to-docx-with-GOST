@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 
 
 // config / params / const - все то, что необходимо будет вынести в "файлы хранения"
-
+// new
 function initDefaultDocSettings($phpWord) {
     $properties = $phpWord->getDocInfo();
 

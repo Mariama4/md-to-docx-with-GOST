@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <formmethod="post" name="form" enctype="multipart/form-data" onSubmit="return false;">
+    <p><input type="submit" name="submit" value="Send" onclick="myFunction()"/></p>
+    
+    <link rel="stylesheet" href="node_modules/editor.md/css/editormd.min.css" />
+<div id="editor">
+    <!-- Tips: Editor.md can auto append a `<textarea>` tag -->
+    <textarea style="display:none;">### Hello Editor.md !</textarea>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="node_modules/editor.md/editormd.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        var editor = editormd("editor", {
+             width: "100%",
+             height: "500px",
+             //markdown: "xxxx",     // dynamic set Markdown text
+            path : "node_modules/editor.md/lib/"  // Autoload modules mode, codemirror, marked... dependents libs path
+        });
+    });
+</script>
+<script>
+    function myFunction() {
+    let text = (document.querySelector('textarea').value).replaceAll('\n','|n');;
+    alert(text);
+    $.ajax({
+            type : "POST",  //type of method
+            url  : "main.php",  //your page
+            dataType: 'html',
+            data : { 'text' : text},// passing the values
+            success: function(res){
+                console.log(res);
+                alert(res);  
+                                    //do what you want here...
+                    }
+        });
+    }
+    </script>
+</formmethod=>
+</body>
+</html>
